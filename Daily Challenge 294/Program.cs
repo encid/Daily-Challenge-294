@@ -8,10 +8,10 @@ namespace ConsoleApplication1 {
         static void Main(string[] args)
         {
 
-            Console.WriteLine("ladilmy, daily ... " + Scrabble("ladilmy", "daily"));
-            Console.WriteLine("eerriin, eerie ... " + Scrabble("eerriin", "eerie"));
-            Console.WriteLine("orrpgma, program ... " + Scrabble("orrpgma", "program"));
-            Console.WriteLine("orppgma, program ... " + Scrabble("orppgma", "program"));
+            Console.WriteLine("ladilmy, daily ... " + Scrabbles("ladilmy", "daily"));
+            Console.WriteLine("eerriin, eerie ... " + Scrabbles("eerriin", "eerie"));
+            Console.WriteLine("orrpgma, program ... " + Scrabbles("orrpgma", "program"));
+            Console.WriteLine("orppgma, program ... " + Scrabbles("orppgma", "program"));
 
             Console.ReadLine();
         }
@@ -48,6 +48,22 @@ namespace ConsoleApplication1 {
                 return temp;
             }
             return tiles;
+        }
+
+        static bool Scrabbles(string letters, string word)
+        {
+            var letterList = letters.ToList();
+
+            foreach (var character in word) {
+                if (letterList.Contains(character)) {
+                    letterList.Remove(character);                
+                }
+                else {
+                    return false;
+                }
+            }
+
+            return true;
         }
     }
 }
